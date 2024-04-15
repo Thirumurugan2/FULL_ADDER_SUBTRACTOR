@@ -38,10 +38,12 @@ Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
 FULL ADDER:
-![Screenshot 2024-04-04 150857](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/c04cdab2-e4cf-4695-98e9-2b16b9412743)
+![Screenshot 2024-04-15 175019](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/55e7b246-2834-4f1d-8650-651320aaa2b9)
+
 
 FULL SUBTRACTOR:
-![Screenshot 2024-04-04 151134](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/8a0a8a6b-71a0-470d-9f63-363748b4c568)
+ ![Screenshot 2024-04-15 175052](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/29a4e873-fc6b-45e1-aa0e-24eddf892146)
+
 
 **Procedure**
 
@@ -64,44 +66,35 @@ Write the detailed procedure here
 /* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
 */
 
-## Full_adder
-module fulladd_top(a,b,cin,sum,carry);
+## PROGRAM
+```
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+Developed by:Zafreen J
+RegisterNumber:212223040252
+module FULL_addsub(a,b,cin,sum,carry,BO,DIFF);
 input a,b,cin;
-output sum,carry;
-wire w1,w2,w3,w4;       
-xor(w1,a,b);
-xor(sum,w1,cin);        
-
-and(w2,a,b);
-and(w3,b,cin);
-and(w4,cin,a);
-
-or(carry,w2,w3,w4);
-endmodule 
-
-## Full_subtractor
-module fullsub_top(a,b,Bin,BO,DIFF);
-input a,b,Bin;
-output BO,DIFF;
-assign DIFF = a ^ b ^ Bin;
-  assign BO = (a & b) | ((a ^ b) & Bin);
+output sum,carry,BO,DIFF;
+assign sum = a^b^cin;
+assign carry = (a&b) | (b&cin) | (a&cin);
+wire a0;
+not (a0,a);
+//Write syntax for full subtractor Borrow and Difference in data flow modelling
+assign DIFF = a^b^cin;
+assign BO = (a0&b) | (b&cin) | (a0&cin);
 endmodule
+*/
+```
 
-
-Developed by: ZAFREEN J
-RegisterNumber: 212223040252
 
 **RTL Schematic**
 
-![Screenshot 2024-04-04 151306](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/c5778e4f-1d35-48bf-895a-4369c520c35d)
+![Screenshot 2024-04-15 175325](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/0b5fbabc-7118-4fa9-a82b-bdc1b4f9bdc3)
+
 
 **Output Timing Waveform**
 
-FULL ADDER
-![Screenshot 2024-04-04 151409](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/50d4bbca-7c40-4f9d-9ca4-5ae07dcd989e)
+![Screenshot 2024-04-15 175411](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/c58aab8e-370f-432e-beb2-30ea5ea35911)
 
-FULL SUBTRACTOR
-![Screenshot 2024-04-04 151453](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/fa14241b-6e1f-4202-ad87-5cebfed7153c)
 
 
 **Result:**
