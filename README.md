@@ -37,64 +37,48 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
-FULL ADDER:
-![Screenshot 2024-04-15 175019](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/55e7b246-2834-4f1d-8650-651320aaa2b9)
-
-
-FULL SUBTRACTOR:
- ![Screenshot 2024-04-15 175052](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/29a4e873-fc6b-45e1-aa0e-24eddf892146)
-
+## truthtable full adder:
+![image](https://github.com/Priyangarajapandiyan/FULL_ADDER_SUBTRACTOR/assets/144872535/a39d205c-13df-4e00-9017-60f07902d2c1)
+## full subractor:
+![image](https://github.com/Priyangarajapandiyan/FULL_ADDER_SUBTRACTOR/assets/144872535/c70d8be5-2823-43be-953f-92286c4271b7)
 
 **Procedure**
+1)Create a New Project: *Open Quartus and create a new project by selecting "File" > "New Project Wizard." *Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA). 2)Create a New Design File: *Once the project is created, right-click on the project name in the Project Navigator and select "Add New File." *Choose "Verilog HDL File" or "VHDL File," depending on your chosen hardware description language. 3)Write the Combinational Logic Code: *Open the newly created Verilog or VHDL file and write the code for your combinational logic. 4)Compile the Project: *To compile the project, click on "Processing" > "Start Compilation" in the menu. *Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device. 5)Analyze and Fix Errors: *If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window. *Review and fix any issues in your code if necessary. *View the RTL diagram. 6)Verification: *Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF". *Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All. *Give the Input Combinations according to the Truth Table and then simulate the Output Waveform.
 
-Write the detailed procedure here
-**Full Adder:**
-1.Open Quartus II and create a new project.
-2.Use schematic design entry to draw the full adder circuit. 
-3.The circuit consists of XOR, AND, and OR gates. 
-4.Compile the design, verify its functionality through simulation. 
-5.Implement the design on the target device and program it.
-
-**Full Subtractor:** 
-1.Follow the same steps as for the full adder. 
-2.Draw the full subtractor circuit using schematic design. 
-3.The circuit includes XOR, AND, OR gates to perform subtraction. 
-4.Compile, simulate, implement, and program the design similarly to the full adder.
 
 **Program:**
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by:THIRUMURUGAN R RegisterNumber: 212223220118
 */
-
-## PROGRAM
+## full adder
 ```
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by:Zafreen J
-RegisterNumber:212223040252
-module FULL_addsub(a,b,cin,sum,carry,BO,DIFF);
-input a,b,cin;
-output sum,carry,BO,DIFF;
-assign sum = a^b^cin;
-assign carry = (a&b) | (b&cin) | (a&cin);
-wire a0;
-not (a0,a);
-//Write syntax for full subtractor Borrow and Difference in data flow modelling
-assign DIFF = a^b^cin;
-assign BO = (a0&b) | (b&cin) | (a0&cin);
-endmodule
-*/
+ module exp4(a,b,c,sum,carry);
+ input a,b,c;
+ output sum,carry;
+ xor(sum,a,b,c);
+ assign carry=a&b | b&c | a&c;
+ endmodule
 ```
-
-
+ ## full subractor:
+ ```
+module exp4(diff,carry,a,b,c);
+ input a,b,c;
+ output diff,carry;
+ xor(diff,a,b,c);
+ assign carry= (~a)&c | (~a)&b | (b&c);
+ endmodule
+```
 **RTL Schematic**
-
-![Screenshot 2024-04-15 175325](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/0b5fbabc-7118-4fa9-a82b-bdc1b4f9bdc3)
-
+## RTL Schematic Full Adder:
+![image](https://github.com/Priyangarajapandiyan/FULL_ADDER_SUBTRACTOR/assets/144872535/8a59b678-9efc-4f28-9ee8-4dd095456682)
+## full subractor :
+![image](https://github.com/Priyangarajapandiyan/FULL_ADDER_SUBTRACTOR/assets/144872535/6a7f24b8-dfb7-409f-bfa2-60ea6e5c4680)
 
 **Output Timing Waveform**
-
-![Screenshot 2024-04-15 175411](https://github.com/ZafreenJagir/FULL_ADDER_SUBTRACTOR/assets/144870573/c58aab8e-370f-432e-beb2-30ea5ea35911)
-
+## full adder:
+![image](https://github.com/Priyangarajapandiyan/FULL_ADDER_SUBTRACTOR/assets/144872535/1f78e949-8648-4e5d-8e3c-e6a0faddb5a9)
+## full subractor:
+![image](https://github.com/Priyangarajapandiyan/FULL_ADDER_SUBTRACTOR/assets/144872535/653d882b-e645-4aa6-b6b4-a791e7101582)
 
 
 **Result:**
